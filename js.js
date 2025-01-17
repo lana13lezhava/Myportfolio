@@ -106,3 +106,25 @@ button.addEventListener('click', () => {
 //         }
 //     });
 // });
+
+const square = document.getElementById("square");
+let x = 50;
+let y = 50;
+let dx = 0.5;
+let dy = 0.5;
+
+function move() {
+    x += dx;
+    y += dy;
+
+    // Если квадрат касается краёв окна, меняем направление
+    if (x + 50 > window.innerWidth || x < 0) dx = -dx;
+    if (y + 50 > window.innerHeight || y < 0) dy = -dy;
+
+    square.style.left = x + "px";
+    square.style.top = y + "px";
+
+    requestAnimationFrame(move); // Постоянное обновление
+}
+
+move();
